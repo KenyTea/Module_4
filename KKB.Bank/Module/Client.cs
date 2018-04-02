@@ -12,7 +12,27 @@ namespace KKB.Bank.Module
         {
             ListAccount = new List<Account>();
         }
-        public string FoolName { get; set; }
+        private string FoolName_;
+
+       
+        public string FoolName
+        {
+            get
+            {
+                return FoolName_;
+            }
+            set
+            {
+                if (value.Length == 12)
+                {
+                    FoolName_ = value;
+                }
+                else
+                {
+                    throw new Exception("Incorrect inserted IIN");
+                }
+            }
+        }
         private string IIN_;
         public string IIN
         {
@@ -42,5 +62,10 @@ namespace KKB.Bank.Module
         public string PhoneNumber { get; set; }
 
         List<Account> ListAccount;
+
+       public void ClientOnfoPrint()
+        {
+            Console.WriteLine("{0}\n {1}\n {2}\n {3]", FoolName, IIN, Login, PhoneNumber);
+        }
     }
 }
